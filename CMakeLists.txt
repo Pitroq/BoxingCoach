@@ -20,3 +20,6 @@ target_include_directories(
 )
 add_subdirectory(test)
 add_subdirectory(lib/googletest)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE winmm)
+file(COPY ${CMAKE_SOURCE_DIR}/audio/ DESTINATION ${CMAKE_BINARY_DIR}/audio)
