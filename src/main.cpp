@@ -10,8 +10,9 @@ void sleep(int seconds) {
     std::this_thread::sleep_for(std::chrono::seconds(seconds));
 }
 
+int min_punches_count = 3;
 int max_punches_count = 5;
-int combinations_count = 1;
+int combinations_count = 100;
 
 int punch_sleep_time = 0.5;
 int combination_sleep_time = 2;
@@ -22,7 +23,7 @@ int main() {
     srand(time(NULL));
 
     for (int i = 0; i < combinations_count; i++) {
-        std::vector<int> sequence = generate_sequence(max_punches_count, include_body_punches);
+        std::vector<int> sequence = generate_sequence(min_punches_count, max_punches_count, include_body_punches);
         for (auto punch_number : sequence) {
             std::cout << punch_number << " - " << PUNCHES[punch_number - 1] << '\n';
             std::string audio_path = "audio/punch" + std::to_string(punch_number) + "-name.wav";
